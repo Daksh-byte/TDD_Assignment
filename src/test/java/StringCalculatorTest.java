@@ -32,4 +32,16 @@ public class StringCalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.add("1,-2,3,-4"));
         assertEquals("negative numbers not allowed: -2, -4", exception.getMessage());
     }
+
+    @Test
+    public void testNewLineDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(6, calculator.add("1\n2,3"));
+    }
+
+    @Test
+    public void testCustomDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(3, calculator.add("//;\n1;2"));
+    }
 }
